@@ -51,7 +51,7 @@ export default function Home() {
         <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl p-8 mb-10 text-white">
           <h1 className="text-4xl font-bold mb-4">Welcome to Ezone</h1>
           <p className="text-xl mb-6">
-            Discover the latest products at unbeatable prices
+            Discover smileLink latest products at unbeatable prices
           </p>
           <div className="flex space-x-4">
             <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition">
