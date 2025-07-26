@@ -57,14 +57,7 @@ export default function ProductCard({ product }) {
         </div>
       </div>
 
-      {/* Quick View Overlay */}
-      {isHovered && (
-        <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center transition-opacity">
-          <button className="bg-white text-gray-800 px-4 py-2 rounded-md font-medium hover:bg-gray-100 transition">
-            Quick View
-          </button>
-        </div>
-      )}
+      
     </div>
   );
 }
