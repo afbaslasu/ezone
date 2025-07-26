@@ -1,18 +1,20 @@
-// src/pages/Home.jsx
 import React, { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
-import FilterBar from "../components/FilterBar";
+import { useLocation } from "react-router-dom";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
-  const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const perPage = 20;
+  const location = useLocation();
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        const searchParams = new URLSearchParams(location.search);
+        const search = searchParams.get("search") || "";
+
         const query = new URLSearchParams({
           page: page.toString(),
           perPage: perPage.toString(),
@@ -34,18 +36,12 @@ export default function Home() {
     };
 
     fetchProducts();
-  }, [search, page]);
-
-  const handleSearch = (term) => {
-    setPage(1);
-    setSearch(term);
-  };
+  }, [location.search, page]); // Now watching location.search instead of search state
 
   const canLoadMore = page * perPage < total;
 
   return (
     <div className="p-4">
-      <FilterBar onSearch={handleSearch} />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {products.map((p) => (
           <ProductCard key={p.id} product={p} />
